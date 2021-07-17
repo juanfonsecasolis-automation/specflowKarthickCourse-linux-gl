@@ -9,8 +9,8 @@ namespace karthickSpecflowCourse_linux_gl.models
     {
         RestClient _client;
 
-        public Pokedex(){
-            _client = new RestClient("https://pokeapi.co/");
+        public Pokedex(string pokeapiUrl){
+            _client = new RestClient(pokeapiUrl);
         }
 
         public (int, Pokemon) GetPokemonByID(int pokemonID){

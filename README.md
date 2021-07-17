@@ -22,6 +22,16 @@ dotnet build
 dotnet test
 ```
 
+# Run the local REST service
+* Install `npm install -g json-server`
+* Execute `json-server ./db.json`
+* Find on:
+```
+http://localhost:3000/posts/1
+http://localhost:3000/comments/1
+http://localhost:3000/profile/1
+```
+
 # Limitations
 * The steps skeleton is not implemented automatically as in VS.
 
