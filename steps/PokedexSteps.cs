@@ -1,8 +1,6 @@
-using System;
 using TechTalk.SpecFlow;
 using NUnit.Framework;
 using RestSharp;
-using RestSharp.Deserializers;
 using RestSharp.Serialization.Json;
 using System.Collections.Generic;
 
