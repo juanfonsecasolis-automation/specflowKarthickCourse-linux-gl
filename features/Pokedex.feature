@@ -1,10 +1,10 @@
 Feature: Pokedex
-    In order to be a good Pokemon trainer
-    As I am encounting new wild Pokemons
-    I want to know how to use the Pokedex API to get information
+    In order to catch all Pokemons
+    As I am encounting wild Pokemons
+    I want to use the Pokedex API to get information about them
 
 @pokedex
 Scenario: Get a Pokemon
     Given the Pokedex is ON
-    When I have entered ID "1" into the Pokedex
-    Then the result should return a Pokemon with ID "1"
+    When I enter ID "1" in the Pokedex API
+    Then the response returns a Pokemon with ID "1"

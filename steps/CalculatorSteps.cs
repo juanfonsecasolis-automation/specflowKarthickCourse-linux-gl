@@ -1,7 +1,5 @@
-using System;
 using TechTalk.SpecFlow;
 using NUnit.Framework;
-using System.Collections.Generic;
 using karthickSpecflowCourse_linux_gl.src;
 
 namespace karthickSpecflowCourse_linux_gl.steps
@@ -30,7 +28,8 @@ namespace karthickSpecflowCourse_linux_gl.steps
         [Then("the result should be \"(.*)\" on the screen")]
         public void ThenTheResultShouldBe(int result)
         {
-            Assert.AreEqual(calculator.getLastResult(), result, $"Obtained result differs from expected: {calculator.getLastResult()} != {result}");
+            Assert.AreEqual(calculator.getLastResult(), result, 
+            $"Obtained result differs from expected: {calculator.getLastResult()} != {result}");
         }
   }
 }

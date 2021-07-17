@@ -20,7 +20,7 @@ namespace karthickSpecflowCourse_linux_gl.steps
             
         }
 
-        [When("I have entered ID \"(.*)\" into the Pokedex")]
+        [When("I enter ID \"(.*)\" in the Pokedex API")]
         public void IHaveEnteredAnIdIntoThePokedex(int id)
         {
             int offset = int.Parse(config["offset"]);
@@ -38,7 +38,7 @@ namespace karthickSpecflowCourse_linux_gl.steps
             valueCurrent = output["id"];
         }
 
-        [Then("the result should return a Pokemon with ID \"(.*)\"")]
+        [Then("the response returns a Pokemon with ID \"(.*)\"")]
         public void ThenTheResultShouldReturnAPokemonWithID(int id)
         {
             Assert.AreEqual(valueCurrent, $"{pokemonID}", "ID is not correct.");
