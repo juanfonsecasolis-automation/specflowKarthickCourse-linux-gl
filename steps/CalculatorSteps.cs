@@ -1,6 +1,6 @@
 using TechTalk.SpecFlow;
 using NUnit.Framework;
-using karthickSpecflowCourse_linux_gl.src;
+using karthickSpecflowCourse_linux_gl.models;
 
 namespace karthickSpecflowCourse_linux_gl.steps
 {

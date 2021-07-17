@@ -8,7 +8,7 @@ using NUnit.Framework;
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
 
-namespace karthickSpecflowCourse_linux_gl.src
+namespace karthickSpecflowCourse_linux_gl.models
 {
     public class Calculator
     {

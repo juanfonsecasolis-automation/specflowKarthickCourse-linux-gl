@@ -3,6 +3,8 @@ using NUnit.Framework;
 using RestSharp;
 using RestSharp.Serialization.Json;
 using System.Collections.Generic;
+using karthickSpecflowCourse_linux_gl.models;
+using Newtonsoft.Json.Linq;
 
 namespace karthickSpecflowCourse_linux_gl.steps
 {
@@ -11,30 +13,26 @@ namespace karthickSpecflowCourse_linux_gl.steps
     {
         int pokemonID;
         string valueCurrent;
+        Pokedex _pokedex;
 
         [Given("the Pokedex is ON")]
         public void GivenThePokedexIsON()
         {
-            
+            _pokedex = new Pokedex();
         }
 
         [When("I enter ID \"(.*)\" in the Pokedex API")]
         public void IHaveEnteredAnIdIntoThePokedex(int id)
         {
-            int offset = int.Parse(config["offset"]);
-            pokemonID = offset + 1;
+            int pokemonID = int.Parse(config["offset"]) + 1;
 
-            var client = new RestClient("https://pokeapi.co/");
-            var request = new RestRequest("api/v2/pokemon/{pokemonID}", Method.GET);
-            request.AddUrlSegment("pokemonID", pokemonID);
+            int statusCode;
+            Pokemon pokemon;
+            (statusCode, pokemon) = _pokedex.GetPokemonByID(pokemonID);
 
-            var response = client.Execute(request);
-            Assert.AreEqual(response.StatusCode,200,$"Request failed with code {response.StatusCode}");
-            System.Console.WriteLine($"Result: {response.Content}");
+            Assert.AreEqual(statusCode,200, $"Request failed with code {statusCode}");
 
-            var deserialize = new JsonDeserializer();
-            var output = deserialize.Deserialize<Dictionary<string, string>>(response);
-            valueCurrent = output["id"];
+            valueCurrent = pokemon.Id.ToString();
         }
 
         [Then("the response returns a Pokemon with ID \"(.*)\"")]
