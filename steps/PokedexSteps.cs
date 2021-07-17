@@ -29,6 +29,7 @@ namespace karthickSpecflowCourse_linux_gl.steps
             request.AddUrlSegment("pokemonID", pokemonID);
 
             var response = client.Execute(request);
+            Assert.AreEqual(response.StatusCode,200,$"Request failed with code {response.StatusCode}");
             System.Console.WriteLine($"Result: {response.Content}");
 
             var deserialize = new JsonDeserializer();
