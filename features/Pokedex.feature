@@ -6,5 +6,6 @@ Feature: Pokedex
 @pokedex
 Scenario: Get a Pokemon
     Given the Pokedex is ON
-    When I enter ID "1" in the Pokedex API
-    Then the response returns a Pokemon with ID "1"
+    When I send a GET request with ID "1" to the Pokedex API
+    Then the status code is OK
+    And the response returns a Pokemon with ID "1"

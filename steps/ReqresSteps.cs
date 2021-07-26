@@ -3,6 +3,7 @@ using NUnit.Framework;
 using karthickSpecflowCourse_linux_gl.models;
 using Newtonsoft.Json.Linq;
 using System.Net;
+using karthickSpecflowCourse_linux_gl.Hooks;
 
 namespace karthickSpecflowCourse_linux_gl.steps
 {
@@ -11,29 +12,32 @@ namespace karthickSpecflowCourse_linux_gl.steps
     {
         Reqres _reqres;
         JObject _peoplePage;
+        public ReqresSteps(SharedSettings sharedSettings) : base(sharedSettings){
+            _reqres = new Reqres(sharedSettings);
+        }
 
         [Given("I invoke a GET request on Reqres")]
         public void IInvokeAGetRequestOnReqres()
         {
             HttpStatusCode statusCode;
-            _reqres = new Reqres();
             (statusCode, _peoplePage) = _reqres.GetPageOfPeople(1);
-
-            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            _sharedSettings.statusCode = statusCode;
         }
 
         [When("I count the number of people returned")]
         public void ICountTheNumberOfPeopleReturned()
         {
             JArray arrayOfPeople = (JArray) _peoplePage["data"];
-            _bag[BagItems.currentValue] = arrayOfPeople.Count;
+            _sharedSettings.currentValue = arrayOfPeople.Count;
+            TestContext.WriteLine($"Current value: {arrayOfPeople.Count}");
         }
 
         [Then("the counter matches with property \"(.*)\"")]
-        public void TheCounterMatchesWithProperty(int propertyName)
+        public void TheCounterMatchesWithProperty(string propertyName)
         {
             int expectedValue = _peoplePage[propertyName].Value<int>();
-            Assert.AreEqual(expectedValue, (int)_bag[BagItems.currentValue]);
+            TestContext.WriteLine($"Expected value: {expectedValue}");
+            Assert.AreEqual(expectedValue, _sharedSettings.currentValue);
         }
     }
 }

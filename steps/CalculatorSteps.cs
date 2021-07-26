@@ -1,35 +1,36 @@
 using TechTalk.SpecFlow;
 using NUnit.Framework;
 using karthickSpecflowCourse_linux_gl.models;
+using karthickSpecflowCourse_linux_gl.Hooks;
 
 namespace karthickSpecflowCourse_linux_gl.steps
 {
   [Binding]
   public class CalculatorSteps : StepsBase
   {
-        Calculator calculator;
+        Calculator _calculator;
 
-        public CalculatorSteps() {
-            calculator = new Calculator();
+        public CalculatorSteps(SharedSettings sharedSettings) : base(sharedSettings){
+            _calculator = new Calculator();
         }
 
         [Given("I have entered \"(.*)\" into the calculator")]
         public void GivenIHaveEnteredSomethingIntoTheCalculator(int number)
         {
-            calculator.enterNumber(number);
+            _calculator.enterNumber(number);
         }
 
         [When("I press add")]
         public void WhenIPressAdd()
         {
-            calculator.sumAllNumbers();
+            _calculator.sumAllNumbers();
         }
 
         [Then("the result should be \"(.*)\" on the screen")]
         public void ThenTheResultShouldBe(int result)
         {
-            Assert.AreEqual(calculator.getLastResult(), result, 
-            $"Obtained result differs from expected: {calculator.getLastResult()} != {result}");
+            Assert.AreEqual(_calculator.getLastResult(), result, 
+            $"Obtained result differs from expected: {_calculator.getLastResult()} != {result}");
         }
   }
 }
