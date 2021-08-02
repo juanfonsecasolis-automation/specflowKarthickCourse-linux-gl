@@ -12,8 +12,11 @@ namespace karthickSpecflowCourse_linux_gl.models
         public Reqres(SharedSettings sharedSettings)
             :base(sharedSettings.config["reqresUrl"]){}
 
-        public (HttpStatusCode, JObject) GetPageOfPeople(int pageNumber){
-            return ExecuteGetRequest($"/api/users?page={pageNumber}");
+        public (HttpStatusCode, ReqresPage) GetPageOfPeople(int pageNumber){
+            HttpStatusCode statusCode; 
+            JObject jObject; 
+            (statusCode, jObject) = ExecuteGetRequest($"/api/users?page={pageNumber}");
+            return (statusCode, new ReqresPage(jObject));
         }
     }
 }

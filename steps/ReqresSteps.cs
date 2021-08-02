@@ -11,6 +11,7 @@ namespace karthickSpecflowCourse_linux_gl.steps
     public class ReqresSteps : StepsBase
     {
         Reqres _reqres;
+        ReqresPage _reqresPage;
 
         public ReqresSteps(SharedSettings sharedSettings) : base(sharedSettings){
             _reqres = new Reqres(sharedSettings);
@@ -19,18 +20,35 @@ namespace karthickSpecflowCourse_linux_gl.steps
         [Given("I invoke a GET request on the /users endpoint")]
         public void IInvokeAGetRequestOnTheUsersEndpoint()
         {
-            (_sharedSettings.statusCode, _sharedSettings.response) = 
+            (_sharedSettings.statusCode, _reqresPage) = 
                 _reqres.GetPageOfPeople(1);
         }
 
         [Then("the number of records matches the property \"per_page\"")]
         public void TheNumberOfRecordsMatchesThePropertyPerPage()
         {
-            _sharedSettings.expectedValue = _sharedSettings.response["per_page"].Value<int>();
-            JArray arrayOfPeople = (JArray) _sharedSettings.response["data"];
-            _sharedSettings.currentValue = arrayOfPeople.Count;
-            Assert.AreEqual(_sharedSettings.expectedValue, _sharedSettings.currentValue);
- 
+            Assert.AreEqual(_reqresPage.per_page, _reqresPage.people.Count);
+        }
+
+        [Then("the response contains a non-null field \"(.*)\" for user \"(.*)\"")]
+        public void ThenTheResponseContainsANonNullField(string fieldName, int userId){
+            switch(fieldName){
+                case "id": 
+                    Assert.NotNull(_reqresPage.people[userId].id);  
+                    break;  
+                case "email": 
+                    Assert.NotNull(_reqresPage.people[userId].email);  
+                    break;  
+                case "first_name": 
+                    Assert.NotNull(_reqresPage.people[userId].first_name);  
+                    break;  
+                case "last_name": 
+                    Assert.NotNull(_reqresPage.people[userId].last_name);  
+                    break;  
+                case "avatar": 
+                    Assert.NotNull(_reqresPage.people[userId].avatar);  
+                    break;  
+            }
         }
     }
 }
