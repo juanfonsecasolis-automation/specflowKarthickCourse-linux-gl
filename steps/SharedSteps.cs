@@ -11,8 +11,8 @@ namespace karthickSpecflowCourse_linux_gl.steps
     {
         public APISteps(SharedSettings sharedSettings) : base(sharedSettings){}
 
-        [Then("the status code is OK")]
-        public void ThenTheStatusCodeIsOk(){
+        [When("the status code is OK")]
+        public void WhenTheStatusCodeIsOk(){
             Assert.AreEqual(HttpStatusCode.OK, _sharedSettings.statusCode);
         }
         

@@ -1,10 +1,10 @@
 Feature: Reqres
     Learn how to use Reqres
 
-@reqres
-Scenario: verify pagination works
-    Given I invoke a GET request on Reqres
-    When I count the number of people returned
-    Then the status code is OK
-    And the counter matches with property "per_page"
+Background:
+    Given I invoke a GET request on the /users endpoint
 
+@reqres
+Scenario: TC8: verify pagination works
+    When the status code is OK
+    Then the number of records matches the property "per_page"
