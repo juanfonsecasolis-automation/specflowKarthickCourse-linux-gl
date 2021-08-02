@@ -4,6 +4,7 @@ using karthickSpecflowCourse_linux_gl.models;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using karthickSpecflowCourse_linux_gl.Hooks;
+using System.Text.RegularExpressions;
 
 namespace karthickSpecflowCourse_linux_gl.steps
 {
@@ -49,6 +50,13 @@ namespace karthickSpecflowCourse_linux_gl.steps
                     Assert.NotNull(_reqresPage.people[userId].avatar);  
                     break;  
             }
+        }
+
+        [Then("\"(.*)\" field in response follows regex \"(.*)\" for user \"(.*)\"")]
+        public void ThenFieldInResponseFollowsRegexForUser(string fieldName, string regexString, int userId){
+            Regex regex = new Regex(regexString);
+            TestContext.WriteLine($"Email: '{_reqresPage.people[userId].email}'");
+            Assert.True(regex.Match(_reqresPage.people[userId].email).Success);
         }
     }
 }

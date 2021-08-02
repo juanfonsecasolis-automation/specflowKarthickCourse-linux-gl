@@ -17,3 +17,9 @@ Scenario: TC9: verify mandatory personal information fields are present
     And the response contains a non-null field "first_name" for user "0"
     And the response contains a non-null field "last_name" for user "0"
     And the response contains a non-null field "avatar" for user "0"
+
+@reqres
+Scenario: TC10: Verify that the each email follows the format "name@domain.ext"
+    When the status code is OK
+    Then "email" field in response follows regex "[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-z]+" for user "0"
+
