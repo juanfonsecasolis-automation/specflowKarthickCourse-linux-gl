@@ -6,5 +6,5 @@ Feature: Pokedex
 @pokedex
 Scenario: Get a Pokemon
     Given I send a GET request with ID "1" to the Pokedex API
-    When the status code is OK
+    When the status code is "200"
     Then the response returns a Pokemon with ID "1"

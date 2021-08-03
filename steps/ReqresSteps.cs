@@ -58,5 +58,18 @@ namespace karthickSpecflowCourse_linux_gl.steps
             TestContext.WriteLine($"Email: '{_reqresPage.people[userId].email}'");
             Assert.True(regex.Match(_reqresPage.people[userId].email).Success);
         }
+
+        [Given("I send a Post request to create a new user with name \"(.*)\" and job \"(.*)\"")]
+        public void GivenISendAPostRequestToCreateANewUserWithNameAndJob(string name, string job){
+            (_sharedSettings.statusCode, _sharedSettings.response) 
+                = _reqres.CreateNewPerson(name, job);
+            TestContext.WriteLine($"Saving '{_sharedSettings.response["id"].ToString()}'");
+            _sharedSettings.lastCreatedReqresId = _sharedSettings.response["id"].ToString();
+        }
+
+        [Given("I delete the last created user")]
+        public void GivenIDeleteTheLastCreatedUser(){
+            _sharedSettings.statusCode =_reqres.DeletePerson(_sharedSettings.lastCreatedReqresId);
+        }
     }
 }

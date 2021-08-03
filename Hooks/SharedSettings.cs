@@ -15,8 +15,11 @@ namespace karthickSpecflowCourse_linux_gl.Hooks
         public object expectedValue;
         public JObject response;
         
+        public string lastCreatedReqresId;
+
+        public string reqresUrl { get{ return config["reqresUrl"]; } }
+
         public SharedSettings(){
-            
             config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();

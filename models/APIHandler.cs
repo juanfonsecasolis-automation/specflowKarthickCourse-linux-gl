@@ -16,5 +16,18 @@ namespace karthickSpecflowCourse_linux_gl.models
             var response = _client.Execute(request);
             return (response.StatusCode, JObject.Parse(response.Content));
         }
+
+        public (HttpStatusCode, JObject) ExecutePostRequest(string endpoint, object body){
+            var request = new RestRequest(endpoint, Method.POST);
+            request.AddJsonBody(body);
+            var response = _client.Execute(request);
+            return (response.StatusCode, JObject.Parse(response.Content));
+        }
+
+        public HttpStatusCode ExecuteDeleteRequest(string endpoint){
+            var request = new RestRequest(endpoint, Method.DELETE);
+            var response = _client.Execute(request);
+            return response.StatusCode;
+        }
     }
 }
