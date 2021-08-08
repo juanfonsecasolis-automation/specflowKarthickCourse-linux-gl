@@ -11,6 +11,7 @@
 * Add specflow dependencies using `dotnet add package SpecFlow.NUnit`
 * Add nUnit dependencies using `dotnet add package nunit`
 * Add Restsharp dependencies using `dotnet add package Restsharp`
+* Add PACT dependencies using `dotnet add package PactNet.Windows`
 * Add Configuration dependencies using `dotnet add package Microsoft.Extensions.Configuration` and `dotnet add package Microsoft.Extensions.Configuration.Json `
 * Add automatic feature class generation dependency using `dotnet add package SpecFlow.Tools.MsBuild.Generation`.
 
@@ -34,6 +35,19 @@ http://localhost:3000/profile/1
 
 # Limitations
 * The steps skeleton is not implemented automatically as in VS.
+
+# Contract testing
+Composed of three layers:
+* Unit testing (fast, reliable)
+* Integration testing (slow, not reliable)
+* End-to-end testing (slow, not reliable)
+
+Contract testing applicable when two components need to comunicate each other (consumer vs. provider).
+
+## PACT
+A consumer-driven contract testing tool
+
+
 
 # References
 1. Learn Dash Academy. Setting up Specflow on a dotnet core project using Visual Studio code with LInux OS. [URL](https://testautomation.org/setting-up-specflow-on-a-dotnet-core-project-using-visual-studio-code-with-linux-os/)
