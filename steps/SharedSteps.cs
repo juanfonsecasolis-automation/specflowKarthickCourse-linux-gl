@@ -15,6 +15,11 @@ namespace karthickSpecflowCourse_linux_gl.steps
         public void WhenTheStatusCodeIs(int expectedCode){
             Assert.AreEqual(expectedCode, (int) _sharedSettings.statusCode);
         }
+
+        [Then("the status code is \"(.*)\"")]
+        public void ThenTheStatusCodeIs(int expectedCode){
+            Assert.AreEqual(expectedCode, (int) _sharedSettings.statusCode);
+        }
         
     }
 }

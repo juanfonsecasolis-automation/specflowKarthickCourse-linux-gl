@@ -18,11 +18,11 @@ namespace karthickSpecflowCourse_linux_gl.steps
             _reqres = new Reqres(sharedSettings);
         }
 
-        [Given("I invoke a GET request on the /users endpoint")]
-        public void IInvokeAGetRequestOnTheUsersEndpoint()
+        [Given("I get the information of user (.*)")]
+        public void IInvokeAGetRequestOnTheUsersEndpoint(string userId)
         {
             (_sharedSettings.statusCode, _reqresPage) = 
-                _reqres.GetPageOfPeople(1);
+                _reqres.GetPageOfPeople(userId);
         }
 
         [Then("the number of records matches the property \"per_page\"")]
@@ -59,16 +59,28 @@ namespace karthickSpecflowCourse_linux_gl.steps
             Assert.True(regex.Match(_reqresPage.people[userId].email).Success);
         }
 
-        [Given("I send a Post request to create a new user with name \"(.*)\" and job \"(.*)\"")]
+        [Given("I create a new user with name \"(.*)\" and job \"(.*)\"")]
         public void GivenISendAPostRequestToCreateANewUserWithNameAndJob(string name, string job){
             (_sharedSettings.statusCode, _sharedSettings.response) 
                 = _reqres.CreateNewPerson(name, job);
-            TestContext.WriteLine($"Saving '{_sharedSettings.response["id"].ToString()}'");
-            _sharedSettings.lastCreatedReqresId = _sharedSettings.response["id"].ToString();
+            string id = _sharedSettings.response["id"].Value<string>();
+            TestContext.WriteLine($"Saving '{id}'");
+            _sharedSettings.lastCreatedReqresId = int.Parse(id);
         }
 
-        [Given("I delete the last created user")]
-        public void GivenIDeleteTheLastCreatedUser(){
+        [Given("the last created user still exists")]
+        public void GivenTheLastCreatedUserStillExists(){
+            JObject jObject;
+            (_sharedSettings.statusCode, jObject) = 
+                _reqres.GetPerson(_sharedSettings.lastCreatedReqresId);
+            TestContext.WriteLine($"Data: {jObject.ToString()}");
+            Assert.IsNotEmpty(jObject,"User doesn't exist!");
+            Assert.Equals(_sharedSettings.lastCreatedReqresId,
+                jObject["data"]["id"].Value<int>());
+        }
+
+        [When("I delete the last created user")]
+        public void WhenIDeleteTheLastCreatedUser(){
             _sharedSettings.statusCode =_reqres.DeletePerson(_sharedSettings.lastCreatedReqresId);
         }
     }
