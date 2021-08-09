@@ -47,12 +47,14 @@ the endpoint `http://localhost:3000/employee` will be created.
 * The steps skeleton is not implemented automatically as in VS.
 
 # Contract testing
-Composed of three layers:
+Testing is composed of three layers:
 * Unit testing (fast, reliable)
 * Integration testing (slow, not reliable)
 * End-to-end testing (slow, not reliable)
 
-Contract testing applicable when two components need to comunicate each other (consumer vs. provider).
+Contract testing is applicable when two components need to comunicate each other (consumer vs. provider).
+
+The main idea is that a mock is created to formalize the specifications and the mock response is compared against the real response.
 
 ## PACT
 A consumer-driven contract testing tool
