@@ -13,10 +13,12 @@
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="PactNet.Windows" Version="3.0.0" />
     <PackageReference Include="Restsharp" Version="106.11.7" />
     <PackageReference Include="SpecFlow.NUnit" Version="3.9.8" />
     <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.9.8" />
     <None Update="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
 
 </Project>

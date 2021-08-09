@@ -10,6 +10,7 @@
 * Create three folders: src, features, steps
 * Add specflow dependencies using `dotnet add package SpecFlow.NUnit`
 * Add nUnit dependencies using `dotnet add package nunit`
+* Add xUnit dependencies using `dotnet add package xunit`
 * Add Restsharp dependencies using `dotnet add package Restsharp`
 * Add PACT dependencies using `dotnet add package PactNet.Windows`
 * Add Configuration dependencies using `dotnet add package Microsoft.Extensions.Configuration` and `dotnet add package Microsoft.Extensions.Configuration.Json `
@@ -32,7 +33,16 @@ http://localhost:3000/posts/1
 http://localhost:3000/comments/1
 http://localhost:3000/profile/1
 ```
-
+Remember that you can add more endpoints by modifying the db.json file. So, for instance, adding an entry like this:
+```
+"employee":{
+      "Id": "",
+      "EmployeeName":"",
+      "Email": "",
+      "City":""
+    }
+```
+the endpoint `http://localhost:3000/employee` will be created.
 # Limitations
 * The steps skeleton is not implemented automatically as in VS.
 
@@ -47,8 +57,6 @@ Contract testing applicable when two components need to comunicate each other (c
 ## PACT
 A consumer-driven contract testing tool
 
-
-
 # References
-1. Learn Dash Academy. Setting up Specflow on a dotnet core project using Visual Studio code with LInux OS. [URL](https://testautomation.org/setting-up-specflow-on-a-dotnet-core-project-using-visual-studio-code-with-linux-os/)
+1. Learn Dash Academy. Setting up Specflow on a dotnet core project using Visual Studio code with Linux OS. [URL](https://testautomation.org/setting-up-specflow-on-a-dotnet-core-project-using-visual-studio-code-with-linux-os/)
 2. Specflow. Gherkin Reference. [URL](https://gorillalogic.udemy.com/course/api-testing-with-restsharp-and-specflow-in-csharp)

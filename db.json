@@ -15,5 +15,19 @@
     ],
     "profile": {
       "name": "typicode"
-    }
+    },
+    "employee":[
+      {
+        "id": 1,
+        "EmployeeName":"Juan Fonseca",
+        "Email": "juan@gmail.com",
+        "City":"Heredia"
+      },
+      {
+        "id": 2,
+        "EmployeeName":"Diego De la Vega",
+        "Email": "diego@gmail.com",
+        "City":"Some California city"
+      }
+    ]
   }
