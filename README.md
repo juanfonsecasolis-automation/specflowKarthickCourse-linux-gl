@@ -56,8 +56,11 @@ Contract testing is applicable when two components need to comunicate each other
 
 The main idea is that a mock is created to formalize the specifications and the mock response is compared against the real response.
 
+## Paralelization
+[Used feature level paralelization](https://docs.specflow.org/projects/specflow/en/latest/Execution/Parallel-Execution.html).
+
 ## PACT
-A consumer-driven contract testing tool
+A consumer-driven contract testing tool.
 
 # References
 1. Learn Dash Academy. Setting up Specflow on a dotnet core project using Visual Studio code with Linux OS. [URL](https://testautomation.org/setting-up-specflow-on-a-dotnet-core-project-using-visual-studio-code-with-linux-os/)

@@ -1,6 +1,3 @@
-using System.Configuration;
-using Microsoft.Extensions.Configuration;
-using karthickSpecflowCourse_linux_gl.models;
 using karthickSpecflowCourse_linux_gl.Hooks;
 using TechTalk.SpecFlow;
 
