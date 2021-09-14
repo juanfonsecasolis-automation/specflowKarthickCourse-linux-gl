@@ -12,9 +12,6 @@ namespace karthickSpecflowCourse_linux_gl.Hooks
     {
         private const string testDataFileName = "testdata.txt";
         public IConfiguration config;
-        public HttpStatusCode statusCode;
-        public object currentValue;
-        public object expectedValue;
         public JObject response;
         
         public int lastCreatedReqresId {

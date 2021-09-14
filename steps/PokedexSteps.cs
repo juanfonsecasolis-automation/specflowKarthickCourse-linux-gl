@@ -12,22 +12,22 @@ namespace karthickSpecflowCourse_linux_gl.steps
         public Pokedex _pokedex;
         Pokemon _pokemon;
         
-        public PokedexSteps(SharedSettings sharedSettings) : base(sharedSettings){
+        public PokedexSteps(SharedSettings sharedSettings, ScenarioContext scenarioContext) : base(sharedSettings, scenarioContext){
             _pokedex = new Pokedex(sharedSettings);
         }
 
         [Given("I send a GET request with ID \"(.*)\" to the Pokedex API")]
         public void ISendAGetResquestWithIdToThePokedexApi(int id)
         {
-            _sharedSettings.expectedValue = id;
-            (_sharedSettings.statusCode, _pokemon) = _pokedex.GetPokemonByID(id);
-            _sharedSettings.currentValue = _pokemon.Id;
+            _scenarioContext[Keys.expectedValue] = id;
+            (_scenarioContext[Keys.statusCode], _pokemon) = _pokedex.GetPokemonByID(id);
+            _scenarioContext[Keys.currentValue] = _pokemon.Id;
         }
 
         [Then("the response returns a Pokemon with ID \"(.*)\"")]
         public void ThenTheResultShouldReturnAPokemonWithID(int id)
         {
-            Assert.AreEqual(_sharedSettings.expectedValue,_sharedSettings.currentValue);
+            Assert.AreEqual(_scenarioContext[Keys.expectedValue],_scenarioContext[Keys.currentValue]);
         }
     }
 }

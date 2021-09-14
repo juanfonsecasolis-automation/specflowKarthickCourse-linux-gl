@@ -10,7 +10,7 @@ namespace karthickSpecflowCourse_linux_gl.steps
   {
         Calculator _calculator;
 
-        public CalculatorSteps(SharedSettings sharedSettings) : base(sharedSettings){
+        public CalculatorSteps(SharedSettings sharedSettings, ScenarioContext scenarioContext) : base(sharedSettings, scenarioContext){
             _calculator = new Calculator();
         }
 

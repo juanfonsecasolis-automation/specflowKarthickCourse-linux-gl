@@ -14,14 +14,14 @@ namespace karthickSpecflowCourse_linux_gl.steps
         Reqres _reqres;
         ReqresPage _reqresPage;
 
-        public ReqresSteps(SharedSettings sharedSettings) : base(sharedSettings){
+        public ReqresSteps(SharedSettings sharedSettings, ScenarioContext scenarioContext) : base(sharedSettings, scenarioContext){
             _reqres = new Reqres(sharedSettings);
         }
 
         [Given("I get the information of user (.*)")]
         public void IInvokeAGetRequestOnTheUsersEndpoint(string userId)
         {
-            (_sharedSettings.statusCode, _reqresPage) = 
+            (_scenarioContext[Keys.statusCode], _reqresPage) = 
                 _reqres.GetPageOfPeople(userId);
         }
 
@@ -61,9 +61,9 @@ namespace karthickSpecflowCourse_linux_gl.steps
 
         [Given("I create a new user with name \"(.*)\" and job \"(.*)\"")]
         public void GivenISendAPostRequestToCreateANewUserWithNameAndJob(string name, string job){
-            (_sharedSettings.statusCode, _sharedSettings.response) 
+            (_scenarioContext[Keys.statusCode], _scenarioContext[Keys.response])  
                 = _reqres.CreateNewPerson(name, job);
-            string id = _sharedSettings.response["id"].Value<string>();
+            string id = ((JObject) _scenarioContext[Keys.response])["id"].Value<string>();
             TestContext.WriteLine($"Saving '{id}'");
             _sharedSettings.lastCreatedReqresId = int.Parse(id);
         }
@@ -71,7 +71,7 @@ namespace karthickSpecflowCourse_linux_gl.steps
         [Given("the last created user still exists")]
         public void GivenTheLastCreatedUserStillExists(){
             JObject jObject;
-            (_sharedSettings.statusCode, jObject) = 
+            (_scenarioContext[Keys.statusCode], jObject) = 
                 _reqres.GetPerson(_sharedSettings.lastCreatedReqresId);
             TestContext.WriteLine($"Data: {jObject.ToString()}");
             Assert.IsNotEmpty(jObject,"User doesn't exist!");
@@ -81,7 +81,7 @@ namespace karthickSpecflowCourse_linux_gl.steps
 
         [When("I delete the last created user")]
         public void WhenIDeleteTheLastCreatedUser(){
-            _sharedSettings.statusCode =_reqres.DeletePerson(_sharedSettings.lastCreatedReqresId);
+            _scenarioContext[Keys.statusCode] =_reqres.DeletePerson(_sharedSettings.lastCreatedReqresId);
         }
     }
 }
