@@ -1,10 +1,7 @@
-using System;
 using System.Net;
-using System.Text.Json;
+using System.Threading.Tasks;
 using karthickSpecflowCourse_linux_gl.Hooks;
 using Newtonsoft.Json.Linq;
-using NUnit.Framework;
-using RestSharp;
 
 namespace karthickSpecflowCourse_linux_gl.models
 {
@@ -17,6 +14,13 @@ namespace karthickSpecflowCourse_linux_gl.models
             HttpStatusCode statusCode; 
             JObject jObject; 
             (statusCode, jObject) = ExecuteGetRequest($"/api/users?page={pageNumber}");
+            return (statusCode, new ReqresPage(jObject));
+        }
+
+        public async Task<(HttpStatusCode, ReqresPage)> GetPageOfPeopleAsync(string pageNumber){
+            HttpStatusCode statusCode; 
+            JObject jObject; 
+            (statusCode, jObject) = await ExecuteGetRequestAsync($"/api/users?delay={5}&page={pageNumber}");
             return (statusCode, new ReqresPage(jObject));
         }
 

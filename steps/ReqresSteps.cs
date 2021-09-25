@@ -18,11 +18,18 @@ namespace karthickSpecflowCourse_linux_gl.steps
             _reqres = new Reqres(sharedSettings);
         }
 
-        [Given("I get the information of user (.*)")]
+        [Given("I get the information of user \"(.*)\"")]
         public void IInvokeAGetRequestOnTheUsersEndpoint(string userId)
         {
             (_scenarioContext[Keys.statusCode], _reqresPage) = 
                 _reqres.GetPageOfPeople(userId);
+        }
+
+        [Given("I get asynchronously the information of user \"(.*)\"")]
+        public async void IInvokeAGetRequestOnTheUsersEndpointAsynchronously(string userId)
+        {
+            (_scenarioContext[Keys.statusCode], _reqresPage) = 
+                await _reqres.GetPageOfPeopleAsync(userId);
         }
 
         [Then("the number of records matches the property \"per_page\"")]

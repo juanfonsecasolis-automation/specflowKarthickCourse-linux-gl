@@ -2,7 +2,7 @@ Feature: ReqresGet
     Learn how to use Reqres GET requests
 
 Background:
-    Given I get the information of user 1
+    Given I get the information of user "1"
 
 @reqres
 Scenario: TC8: verify pagination works

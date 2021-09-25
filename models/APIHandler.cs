@@ -1,4 +1,5 @@
 using System.Net;
+using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 
@@ -14,6 +15,12 @@ namespace karthickSpecflowCourse_linux_gl.models
         public (HttpStatusCode, JObject) ExecuteGetRequest(string endpoint){
             var request = new RestRequest(endpoint, Method.GET);
             var response = _client.Execute(request);
+            return (response.StatusCode, JObject.Parse(response.Content));
+        }
+
+        public async Task<(HttpStatusCode, JObject)> ExecuteGetRequestAsync(string endpoint){
+            var request = new RestRequest(endpoint, Method.GET);
+            IRestResponse response = await _client.ExecuteAsync(request);
             return (response.StatusCode, JObject.Parse(response.Content));
         }
 
