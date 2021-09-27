@@ -12,7 +12,7 @@
 * Add nUnit dependencies using `dotnet add package nunit`
 * Add xUnit dependencies using `dotnet add package xunit`
 * Add Restsharp dependencies using `dotnet add package Restsharp`
-* Add PACT dependencies using `dotnet add package PactNet.Windows`
+* Add PACT dependencies using `dotnet add package PactNet`
 * Add Configuration dependencies using `dotnet add package Microsoft.Extensions.Configuration` and `dotnet add package Microsoft.Extensions.Configuration.Json `
 * Add automatic feature class generation dependency using `dotnet add package SpecFlow.Tools.MsBuild.Generation`.
 
