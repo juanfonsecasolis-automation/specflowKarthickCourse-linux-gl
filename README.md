@@ -10,9 +10,10 @@
 * Create three folders: src, features, steps
 * Add specflow dependencies using `dotnet add package SpecFlow.NUnit`
 * Add nUnit dependencies using `dotnet add package nunit`
-* Add xUnit dependencies using `dotnet add package xunit`
+* Add xUnit dependencies using `dotnet add package xunit` and `dotnet add package xUnit.runner.visualstudio`
 * Add Restsharp dependencies using `dotnet add package Restsharp`
-* Add PACT dependencies using `dotnet add package PactNet`
+* Add PACT dependencies using `dotnet add package PactNet.linux.x64`
+* Add PACT dependencies using `dotnet add package PactNet.linux.x64`
 * Add Configuration dependencies using `dotnet add package Microsoft.Extensions.Configuration` and `dotnet add package Microsoft.Extensions.Configuration.Json `
 * Add automatic feature class generation dependency using `dotnet add package SpecFlow.Tools.MsBuild.Generation`.
 
