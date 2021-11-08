@@ -21,6 +21,7 @@ Juan M. Fonseca-Solís 2021. Repository for storing the code of the Karthick's S
 ```
 dotnet add package Microsoft.EntityFrameworkCore
 dotnet add package Microsoft.EntityFrameworkCore.InMemory
+dotnet add package ExtentReports.Core
 dotnet add ContactTesting/ContactTesting.csproj reference EmployeeAPI/EmployeeAPI.csproj
 ```
 

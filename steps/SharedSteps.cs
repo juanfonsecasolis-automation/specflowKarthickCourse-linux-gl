@@ -1,7 +1,6 @@
 using karthickSpecflowCourse_linux_gl.Hooks;
 using TechTalk.SpecFlow;
 using NUnit.Framework;
-[assembly: Parallelizable(ParallelScope.Fixtures)]
 
 namespace karthickSpecflowCourse_linux_gl.steps
 {
